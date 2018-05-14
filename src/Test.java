@@ -1,20 +1,24 @@
 /**
  * Created by Hakan Tanis on 17.04.2018.
  */
-public class Test {
+public class Knoten {
     public static void main(String[] args) {
         var Knotenmenge;
         Knotenmenge=[];
-        char [26] Knotenname = new char [ABCDEFGHIJKLMNOPQRSTUVWXYZ]; // Knotennamen gehen Default von A bis Z
+        char [ABCDEFGHIJKLMNOPQRSTUVWXYZ] Knotenname = new char [26]; // Knotennamen gehen Default von A bis Z
         if NeuerKnotenname nicht benannt dann Knotenname=A if else Knotenname belegt dann Knotenname++;  // falls keine Knotennamen angegeben werden,
                                                                                                 // werden die Knoten default von A bis Z benannt // Char array erstellen
          if Knoten benamen dann Knotenname=" new name"; // wenn der Nutzer den Knoten benennen möchte, wird der neue Name übernommen
 
+        //Zufallsmatrix erstellen 
+        Knotenmenge=[random];
+         Knoten knoten[random] = new Knoten("[]");             // das Objekt des Knoten wird erzeugt 
+        knoten[random].addDestination(knoten[], []); 
+        
         //Kanntenmatrix
-        arraylist: Anfangsknoten wird angegeben;
-         arraylist Endknoten wird angegeben;
-         arraylist entfernung zwischen Knoten wird angegeben;
-
+       Knoten knoten[A] = new Knoten("[]");             // das Objekt des Knoten wird erzeugt 
+        knoten[].addDestination(knoten[], []);            // als erstes wird der Anfangsknoten eingegeben und dann der verbundene Knoten eingegeben und zu letzt die Kantenlänge
+                                                            //z.B von Knoten A zu Knoten B ist die Länge 10 
 
         boolean [] []   zweidimArray = new boolean [26][12];//26 Zeilen und 12 Spalte
 
@@ -56,6 +60,18 @@ public class Test {
 
     }
 }
+
+       // Graphen erstellen 
+public class Graph  {
+    private Set<Knoten> knoten = new HashSet<>(); // HashSet ist eine Mengenklasse die die Knoten
+     
+    public void addKnoten(Knoten Knoten[]) {
+        knoten.add(knoten[]);
+    }
+}
+
+
+
 
 
 // Kantenabschnitt wird hier beantwortet
