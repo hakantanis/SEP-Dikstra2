@@ -5,7 +5,7 @@ public class Test {
     public static void main(String[] args) {
         var Knotenmenge;
         Knotenmenge=[];
-        array alphabet Char[26]=[ABCDEFGHIJKLMNOPQRSTUVWXYZ]
+        array Knotenname Char[26]=[ABCDEFGHIJKLMNOPQRSTUVWXYZ]
         if NeuerKnotenname nicht benannt dann Knotenname=A if else Knotenname belegt dann Knotenname++;  // falls keine Knotennamen angegeben werden,
                                                                                                 // werden die Knoten default von A bis Z benannt // Char array erstellen
          if Knoten benamen dann Knotenname=" new name"; // wenn der Nutzer den Knoten benennen möchte, wird der neue Name übernommen
