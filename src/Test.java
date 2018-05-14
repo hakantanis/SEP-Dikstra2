@@ -77,8 +77,15 @@ public class Graph  {
 // Kantenabschnitt wird hier beantwortet
 Kante.farbe.default=black; //die Grundfarbe der Kanten ist schwarz
 Kante.farbe.Dijkstra= blau; // wenn der Dijkstra durchlauft färben sich die aktuell bearbeiteten Kanten zu blau
-Kante.farbe.bearbeitet= grau; // wenn der Dijkstra die Kante fertig bearbeitet hat, färbt sich die Kante blau
+Kante.farbe.bearbeitet= grau; // wenn der Dijkstra die Kante fertig bearbeitet hat, färbt sich die Kante grau
 Kante.farbe.auswaehlen= gelb; // beim Selbsttest färben sich die angeklickten Kanten gelb
 Kante.farbe.falsche= rot; // wenn die ausgewaehlte Kante falsch war, färbt sich die Kante rot
 Kante.farbe.richtig= grün; //  wenn die ausgewählte Kante richtig war, färbt sich die Kante grün
+
+
+private class Tabelle {
+    public Knoten; 
+    public Kantenlänge; 
+    
+erstell.dynamische.tabelle.Knotenmenge
 
