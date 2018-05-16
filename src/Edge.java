@@ -1,49 +1,55 @@
 
  	public class Edge
    	{
-   	
-   		private Node quelle = null;
-   		private Node ziel = null;
-   		private Double gewicht = null;
-   		
-   		Node getquelle()
+
+   		private Node source = null;
+   		private Node destination = null;
+   		private Double weight = null;
+
+   		Edge(Double weight)
+        {
+            this.weight = weight;
+        }
+
+   		Node getSource()
    		{
-   			return quelle;
+   			return source;
    		}
    		
    		
-   		Node setquelle(Node newQuelle) // Name vom Knoten?! oder X achse / y achse
+   		void setSource (Node source) // Name vom Knoten?! oder X achse / y achse
    		{
-   			return quelle = newQuelle;
+   			 this.source = source;
    	
    	    }
    		
-   		Node getziel()
+   		Node getDestination()
    		{
-   			return ziel;
+   			return destination;
    		}
    		
-   		Node setziel(Node newZiel) // name vom Knoten?! oder X achse / Y achse
+   		void setDestination(Node destination) // name vom Knoten?! oder X achse / Y achse
    		{
-   			return ziel = newZiel;
+   			 this.destination = destination;
+   		}
+   	/*
+   		Double getWeight()
+   		{
+   			return weight;
    		}
    		
-   		Double getGewicht()
+   		Double setWeight(Double Weight)
    		{
-   			return gewicht;
+   			return weight = weight;
    		}
-   		
-   		Double setGewicht(Double newGewicht)
-   		{
-   			return gewicht = newGewicht;
-   		}
-   		
-   		public String toString() 
-   		{
-			String ergebnis = "test";
-			
-			return ergebnis += quelle.setNameY("test");
-   			
-   		}
-   		
+   		*/
+		public String toString()
+		{
+		String edgeResult = "";
+
+		 edgeResult = "Kante von " + source + " zu " + destination  + " mit dem Gewicht " + weight;
+
+            return edgeResult;
+        }
+
 }
