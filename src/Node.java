@@ -1,7 +1,3 @@
-import com.sun.javaws.jnl.XMLFormat;
-
-import java.awt.*;
-
 public class Node {
 
 	private Integer x = null;
@@ -29,15 +25,14 @@ public class Node {
 	void setY(Integer y) {
 		this.y = y;
 	}
-/*
+	/*
 	String getName() {
 		return name;
 	}
-
 	void setName(String name) {
 		this.name = name;
 	}
-*/
+	 */
 
 	public String toString()
 	{
@@ -57,7 +52,3 @@ public class Node {
 
 
 }
-
-
-	      
-	       		
