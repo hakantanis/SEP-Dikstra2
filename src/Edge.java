@@ -1,3 +1,8 @@
+/*
+ *
+ *
+ * @ Author Kevin Adamczewski
+ */
 public class Edge
 {
 
