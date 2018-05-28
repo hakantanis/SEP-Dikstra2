@@ -11,14 +11,14 @@ public class Test
 	{
 
 		ArrayList<Node> nodelist = new ArrayList<Node>();
-		// Erstellung Knoten
+																					// Erstellung Knoten
 		nodelist.add(new Node("Knoten 1 "));
 		nodelist.add(new Node("Knoten 2 "));
 		nodelist.add(new Node("Knoten 3 "));
 		nodelist.add(new Node("Knoten 4 "));
 		nodelist.add(new Node("Knoten 5 "));
 		nodelist.add(new Node("Knoten 6 "));
-		// X und Y Werte an Knoten vergeben " Noch " selbst
+																					// X und Y Werte an Knoten vergeben " Noch " selbst
 		//	k1.name("Knoten1");
 		nodelist.get(0).setX(100);
 		nodelist.get(0).setY(200);
@@ -37,9 +37,9 @@ public class Test
 
 		nodelist.get(5).setX(250);
 		nodelist.get(5).setY(200);
-
-
-		// Ausgabe  Knoten in Console
+		
+		
+																				// Ausgabe  Knoten in Console
 		for(int i = 0; i < nodelist.size();i++)
 		{
 			if (nodelist.size() >= i)
@@ -51,21 +51,20 @@ public class Test
 			}
 
 		}
-
+		
 		System.out.println("");
 
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 
 
-		// Erstellung Kanten
-		edgelist.add(new Edge (8.0));
+																				// Erstellung Kanten
+		edgelist.add(new Edge(8.0));
 		edgelist.add(new Edge (10.0));
 		edgelist.add(new Edge (5.0));
 		edgelist.add(new Edge (3.0));
 		edgelist.add(new Edge (2.2));
 		edgelist.add(new Edge (9.0));
 		edgelist.add(new Edge (20.5));
-		edgelist.add(new Edge (8.0));
 
 		edgelist.get(0);
 		edgelist.get(1);
@@ -74,9 +73,8 @@ public class Test
 		edgelist.get(4);
 		edgelist.get(5);
 		edgelist.get(6);
-		edgelist.get(7);
 
-		// Erstellung Kanten Quelle / Ziel
+																				// Erstellung Kanten Quelle / Ziel
 		edgelist.get(0).setDestination(nodelist.get(1));
 		edgelist.get(0).setSource(nodelist.get(0));
 
@@ -98,10 +96,7 @@ public class Test
 		edgelist.get(6).setDestination(nodelist.get(5));
 		edgelist.get(6).setSource(nodelist.get(0));
 
-		edgelist.get(7).setDestination(nodelist.get(1));
-		edgelist.get(7).setSource(nodelist.get(0));
-
-		// Ausgabe von Knoten x zu Knoten y
+																					// Ausgabe von Knoten x zu Knoten y
 		for(int i = 0; i < edgelist.size();i++)
 		{
 			if (edgelist.size() >= i)
@@ -114,106 +109,58 @@ public class Test
 			}
 
 		}
-
-		System.out.println();
+		
 		System.out.println("---Start---");																// Ausgabe Anfangsknoten
 		System.out.println(nodelist.get(0));
-		// Ausgabe weiterer NextNodeListen in Console // von Schleife unten
-		ArrayList<Node> nextNode = ComputeNextNodes(nodelist.get(0), edgelist);					
+		 																								// Ausgabe weiterer NextNodeListen in Console // von Schleife unten
+		ArrayList<Node> nextNode = computeNextNodes(nodelist.get(0), edgelist);					
 		printNodeList(nextNode);
-
-		ArrayList<Node> nextNode1 = ComputeNextNodes(nextNode.get(0), edgelist);
+		System.out.println("---");
+		
+		ArrayList<Node> nextNode1 = computeNextNodes(nextNode.get(0), edgelist);
 		printNodeList(nextNode1);
-
-		ArrayList<Node> nextNode2 = ComputeNextNodes(nextNode.get(1), edgelist);
+		
+		ArrayList<Node> nextNode2 = computeNextNodes(nextNode.get(1), edgelist);
 		printNodeList(nextNode2);
 		System.out.println("");
-
+		
 		System.out.println("---End---");																// Ausgabe Endknoten
 		System.out.println(nodelist.get(5));
 	}
 
-
-	/*
-	  public Boolean NoDoubleEdge (ArrayList<Edge> edgelist, Node destination)
-
-	  {
-		for (int i = 0; i < edgelist.size(); i++)
-		{
-			for(int j = 1; j < edgelist.size(); j++)
-			{
-				Edge e = edgelist.get(i);
-				Edge e2 = edgelist.get(j);
-
-				if (e.getDestination() == e2.getDestination() && e.getSource() == e2.getSource())
-				{
-					System.out.println("LUL");
-					return false;
-				}
-				else
-				{
-					return true;
-				}
-
-			}
-		}
-		return false;
-	}
-	 */
-
-	public ArrayList<Node> ComputeNextNodes (Node source, ArrayList<Edge> edgelist/*, ArrayList<Node> nodelist*/)						// Berechnung von nächsten Knoten
+	public ArrayList<Node> computeNextNodes (Node source, ArrayList<Edge> edgelist)						// Berechnung von nächsten Knoten
 	{
 
 		ArrayList<Node> nextNode = new ArrayList<Node>();
+	
+				for(int i = 0; i < edgelist.size(); i++)
+				{
+					Edge e = edgelist.get(i);
 
-		for(int i = 0; i < edgelist.size(); i++)
-		{
-			Edge e = edgelist.get(i);
+					if(e.getSource() == source)
+					{
+						nextNode.add(e.getDestination());
+					}
 
-			if(e.getSource() == source)
-			{
-				nextNode.add(e.getDestination());
-			}
+
+				}
+
+			return nextNode;
 		}
-
-		return nextNode;
-	}
-
-	/*	public Boolean NoDoubleNodes (Node destination ,ArrayList<Node> ComputeNextNodes, ArrayList<Edge> edgelist)
-	{
-		ArrayList<Node> DoubleNode = new ArrayList<Node>();
-
-		for ( int i = 0; i < edgelist.size(); i++)
-		{
-			Edge e = edgelist.get(i);
-
-			if (e.getDestination() == destination)
-			{
-				return true;
-				DoubleNode.add(e)
-			}
-
-			return false;
-
-		}
-		return NoDoubleNodes;
-
-
-	}
-	 */
-
+	
+	
 	public void printNodeList(ArrayList<Node> nextNode)											// Schleife zur Ausgabe von Knotenlistne
 	{
 		System.out.println();
 		System.out.println("---NextNodeList---");
 		for(int i = 0; i < nextNode.size(); i++)
 		{
-			System.out.println(nextNode.get(i));	
+		System.out.println(nextNode.get(i));	
 		}
-
+		
 	}
 
-
+	
 }
 
 
