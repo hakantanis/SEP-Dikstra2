@@ -3,7 +3,7 @@ import java.util.Set;
 
 /**
  * Project Dijkstra Algorithm
- * This class is used to define the half order two
+ * This class is used to define the halforder 2
  *
  * @author Hakan Tanis
  * @author Kevin Adamczewski
