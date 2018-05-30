@@ -1,6 +1,26 @@
+
+/**
+ * Project Dijkstra Algorithm
+ * This class is used to define edges within half order and algorithm
+ *
+ * @author Hakan Tanis
+ * @author Kevin Adamczewski
+ * @author Jonas Litmeyer
+ * Date 30.05.2018
+ * @version 3.0
+ *
+ * Last Change:
+ * by: Hakan Tanis
+ * date: 30.05.2018
+ */
+
 public class Edge
 {
-
+	/**
+	 * @param: source
+	 * @param: destination
+	 * @param: weight
+	 */
 	private Node source = null;
 	private Node destination = null;
 	private Double weight = null;
@@ -15,8 +35,10 @@ public class Edge
 		return source;
 	}
 
-
-	void setSource (Node source) // Name vom Knoten?! oder X achse / y achse
+	/**
+	 * @param source set name or x axis or y axis?
+	 */
+	void setSource (Node source)
 			{
 		this.source = source;
 
@@ -27,7 +49,10 @@ public class Edge
 		return destination;
 	}
 
-	void setDestination(Node destination) // name vom Knoten?! oder X achse / Y achse
+	/**
+	 * @param destination set name or x axis or y axis?
+	 */
+	void setDestination(Node destination)
 	{
 		this.destination = destination;
 	}
@@ -41,6 +66,13 @@ public class Edge
    		{
    			return weight = weight;
    		}
+	 */
+
+
+
+	/**
+	 *
+	 * @return
 	 */
 	public String toString()
 	{

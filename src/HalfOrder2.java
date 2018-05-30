@@ -3,7 +3,7 @@ import java.util.Set;
 
 /**
  * Project Dijkstra Algorithm
- * This class is used to define the half order
+ * This class is used to define the half order two
  *
  * @author Hakan Tanis
  * @author Kevin Adamczewski
@@ -16,7 +16,7 @@ import java.util.Set;
  * date: 30.05.2018
  */
 
-public class HalfOrder
+public class HalfOrder2
 {
     /**
      * initialisation of methods
@@ -66,41 +66,54 @@ public class HalfOrder
     }
 
     /**
-     * create list of edges (example one)
+     * create list of edges (example two)
      * @param nodelist
      * @return
      */
     private ArrayList<Edge> createEdgelistExampleOne(ArrayList<Node> nodelist)
     {
         ArrayList<Edge> edgelist = new ArrayList<Edge>();
-        edgelist.add(new Edge(8.0));
-        edgelist.add(new Edge(10.0));
-        edgelist.add(new Edge(5.0));
+        edgelist.add(new Edge(2.0));
+        edgelist.add(new Edge(4.0));
+        edgelist.add(new Edge(6.0));
+        edgelist.add(new Edge(1.0));
+        edgelist.add(new Edge(2.0));
+        edgelist.add(new Edge(2.0));
         edgelist.add(new Edge(3.0));
-        edgelist.add(new Edge(2.2));
-        edgelist.add(new Edge(9.0));
-        edgelist.add(new Edge(20.5));
+        edgelist.add(new Edge(2.0));
+        edgelist.add(new Edge(2.0));
+        edgelist.add(new Edge(1.0));
+
         // setting destination and source
         edgelist.get(0).setDestination(nodelist.get(1));
         edgelist.get(0).setSource(nodelist.get(0));
 
-        edgelist.get(1).setDestination(nodelist.get(3));
-        edgelist.get(1).setSource(nodelist.get(1));
+        edgelist.get(1).setDestination(nodelist.get(2));
+        edgelist.get(1).setSource(nodelist.get(0));
 
-        edgelist.get(2).setDestination(nodelist.get(4));
-        edgelist.get(2).setSource(nodelist.get(2));
+        edgelist.get(2).setDestination(nodelist.get(3));
+        edgelist.get(2).setSource(nodelist.get(0));
 
-        edgelist.get(3).setDestination(nodelist.get(5));
-        edgelist.get(3).setSource(nodelist.get(3));
+        edgelist.get(3).setDestination(nodelist.get(4));
+        edgelist.get(3).setSource(nodelist.get(1));
 
-        edgelist.get(4).setDestination(nodelist.get(5));
-        edgelist.get(4).setSource(nodelist.get(4));
+        edgelist.get(4).setDestination(nodelist.get(4));
+        edgelist.get(4).setSource(nodelist.get(2));
 
-        edgelist.get(5).setDestination(nodelist.get(2));
-        edgelist.get(5).setSource(nodelist.get(0));
+        edgelist.get(5).setDestination(nodelist.get(5));
+        edgelist.get(5).setSource(nodelist.get(3));
 
-        edgelist.get(6).setDestination(nodelist.get(5));
-        edgelist.get(6).setSource(nodelist.get(0));
+        edgelist.get(6).setDestination(nodelist.get(6));
+        edgelist.get(6).setSource(nodelist.get(4));
+
+        edgelist.get(7).setDestination(nodelist.get(7));
+        edgelist.get(7).setSource(nodelist.get(5));
+
+        edgelist.get(8).setDestination(nodelist.get(8));
+        edgelist.get(8).setSource(nodelist.get(6));
+
+        edgelist.get(9).setDestination(nodelist.get(8));
+        edgelist.get(9).setSource(nodelist.get(7));
 
         return edgelist;
     }
@@ -124,19 +137,22 @@ public class HalfOrder
     }
 
     /**
-     * create list of nodes (example one)
+     * create list of nodes (example two)
      * @return
      */
     private ArrayList<Node> createNodelistExampleOne()
     {
         ArrayList<Node> nodelist = new ArrayList<Node>();
 
-        nodelist.add(new Node("Knoten 1 "));
-        nodelist.add(new Node("Knoten 2 "));
-        nodelist.add(new Node("Knoten 3 "));
-        nodelist.add(new Node("Knoten 4 "));
-        nodelist.add(new Node("Knoten 5 "));
-        nodelist.add(new Node("Knoten 6 "));
+        nodelist.add(new Node("Knoten A "));
+        nodelist.add(new Node("Knoten B "));
+        nodelist.add(new Node("Knoten C "));
+        nodelist.add(new Node("Knoten D "));
+        nodelist.add(new Node("Knoten E "));
+        nodelist.add(new Node("Knoten F "));
+        nodelist.add(new Node("Knoten G "));
+        nodelist.add(new Node("Knoten H "));
+        nodelist.add(new Node("Knoten I "));
         return nodelist;
     }
 
@@ -273,5 +289,6 @@ public class HalfOrder
             }
         }
     }
+
 }
 
