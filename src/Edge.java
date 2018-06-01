@@ -17,9 +17,9 @@
 public class Edge
 {
 	/**
-	 * @param: source
-	 * @param: destination
-	 * @param: weight
+	 * @param: source from which node the edge starts
+	 * @param: destination is the adress that the edge goes to
+	 * @param: weight of the edge
 	 */
 	private Node source = null;
 	private Node destination = null;
@@ -68,11 +68,10 @@ public class Edge
    		}
 	 */
 
-
-
 	/**
+	 * @return edgeresult which containts a string that includes the parameters source, destination
+	 * and weight of an edge
 	 *
-	 * @return
 	 */
 	public String toString()
 	{

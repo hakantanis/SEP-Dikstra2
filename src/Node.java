@@ -67,7 +67,8 @@ public class Node
 
 
 /**
- * @param toString creats how to output
+ * @param toString creats how to output name of node and posotion of x and y coordinate
+ * @return result of output
  */
     public String toString()
     {

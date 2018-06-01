@@ -38,9 +38,8 @@ public class HalfOrder2
     }
 
     /**
-     * get the first node
-     * @param nodelist
-     * @return
+     * @param nodelist get the first node
+     * @return first node
      */
     public Node getFirstNode(ArrayList<Node> nodelist)
     {
@@ -49,13 +48,12 @@ public class HalfOrder2
     }
 
     /**
-     * prints edges
-     * @param edgelist
-     * @param descr
+     * @param edgelist prints edges of given edgelist
+     * @param description of edge set to be printed as prefix
      */
-    private void printEdges(ArrayList<Edge> edgelist, String descr)
+    private void printEdges(ArrayList<Edge> edgelist, String description)
     {
-        System.out.println("Edges: " + descr);
+        System.out.println("Edges: " + description);
 
         for (int i = 0; i < edgelist.size(); i++)
         {
@@ -66,9 +64,8 @@ public class HalfOrder2
     }
 
     /**
-     * create list of edges (example two)
-     * @param nodelist
-     * @return
+     * @param nodelist create and add list of edges (example two)
+     * @return edgelist with sources, destination and weights
      */
     private ArrayList<Edge> createEdgelistExampleOne(ArrayList<Node> nodelist)
     {
@@ -84,7 +81,6 @@ public class HalfOrder2
         edgelist.add(new Edge(2.0));
         edgelist.add(new Edge(1.0));
 
-        // setting destination and source
         edgelist.get(0).setDestination(nodelist.get(1));
         edgelist.get(0).setSource(nodelist.get(0));
 
@@ -119,13 +115,12 @@ public class HalfOrder2
     }
 
     /**
-     * prints nodes
-     * @param nodelist
-     * @param descr
+     * @param nodelist prints nodes
+     * @param description of node set to be printed as prefix
      */
-    private void printNodes(ArrayList<Node> nodelist, String descr)
+    private void printNodes(ArrayList<Node> nodelist, String description)
     {
-        System.out.println("Nodelist : " + descr);
+        System.out.println("Nodelist : " + description);
         System.out.println();
 
         for (int i = 0; i < nodelist.size(); i++)
@@ -137,8 +132,8 @@ public class HalfOrder2
     }
 
     /**
-     * create list of nodes (example two)
-     * @return
+     *create list of named nodes (example two)
+     *@return list of named nodes (example two)
      */
     private ArrayList<Node> createNodelistExampleOne()
     {
@@ -157,10 +152,9 @@ public class HalfOrder2
     }
 
     /**
-     * checks if double edges
-     * @param edgelist
-     * @param destination
-     * @return
+     * @param edgelist checks if double edges exists
+     * @param destination checks if edge e and e2 are the same
+     * @return edge if edge e is not the same as edge e2
      */
     public Boolean checkIfDoubleEdges(ArrayList<Edge> edgelist, Node destination)
     {
@@ -184,10 +178,9 @@ public class HalfOrder2
     }
 
     /**
-     * computes next node
-     * @param source
-     * @param edgelist
-     * @return
+     * @param source computes next node
+     * @param edgelist checks source and destination
+     * @return of next node
      */
     public ArrayList<Node> computeNextNodes(Node source, ArrayList<Edge> edgelist)
     {
@@ -208,10 +201,9 @@ public class HalfOrder2
     }
 
     /**
-     * add node if not redundant
-     * @param nodeToAdd
-     * @param nodelist
-     * @return
+     * @param nodeToAdd add node if not redundant
+     * @param nodelist checks if node is included
+     * @return node
      */
     public ArrayList<Node> addNodeIfNotRedundant(Node nodeToAdd, ArrayList<Node> nodelist)
     {
@@ -229,12 +221,13 @@ public class HalfOrder2
 
     /**
      * compute HalfOrder
-     * @param firstNode
-     * @param nodelist
-     * @param edgelist
-     * @return
+     * @param firstNode get first node to lock first node
+     * @param nodelist to calculate the next nodelists in the halforder
+     * @param edgelist to put edges between the placement of nodes in the halforder
+     * @return put nodes into the list of lists of the amount of nodes that are given
      */
-    public ArrayList<ArrayList<Node>> computeHalfOrder(Node firstNode, ArrayList<Node> nodelist, ArrayList<Edge> edgelist)
+    public ArrayList<ArrayList<Node>> computeHalfOrder(Node firstNode, ArrayList<Node> nodelist,
+                                                       ArrayList<Edge> edgelist)
     {
         ArrayList<ArrayList<Node>> listOfLists = new ArrayList<ArrayList<Node>>();
         ArrayList<Node> allNodesProcessed = new ArrayList<Node>();
@@ -273,12 +266,12 @@ public class HalfOrder2
     }
 
     /**
-     * add destinations list
-     * @param source
-     * @param destination
-     * @param alreadyProcessed
+     * @param source of node
+     * @param destination of node to node
+     * @param alreadyProcessed add already processed node to already processed list
      */
-    public void magicalAdd(ArrayList<Node> source, ArrayList<Node> destination, ArrayList<Node> alreadyProcessed)
+    public void magicalAdd(ArrayList<Node> source, ArrayList<Node> destination,
+                           ArrayList<Node> alreadyProcessed)
     {
         for (Node node : source)
         {
@@ -289,6 +282,5 @@ public class HalfOrder2
             }
         }
     }
-
 }
 
