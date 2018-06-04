@@ -193,6 +193,7 @@ public class HalfOrder
      * @param nodeToAdd add node if not redundant
      * @param nodelist checks if node is included
      * @return node
+     * <img src="addNodeIfNotRedundant.jpg" alt="illustration" >
      */
     public ArrayList<Node> addNodeIfNotRedundant(Node nodeToAdd, ArrayList<Node> nodelist)
     {
