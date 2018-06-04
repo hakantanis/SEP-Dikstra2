@@ -20,6 +20,7 @@ public class HalfOrder2
 {
     /**
      * initialisation of methods
+     * <img src="halforder.jpg" alt="illustration" >
      */
     public void init()
     {
@@ -267,6 +268,7 @@ public class HalfOrder2
 
     /**
      * @param source of node
+     * <img src="halforder.jpg" alt="illustration" >
      * @param destination of node to node
      * @param alreadyProcessed add already processed node to already processed list
      */
