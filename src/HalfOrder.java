@@ -20,6 +20,7 @@ public class HalfOrder
 {
     /**
      * initialisation of methods
+     * <img src="halforder.jpg" alt="illustration" >
      */
     public void init()
     {
@@ -142,6 +143,7 @@ public class HalfOrder
      * @param edgelist checks if double edges exists
      * @param destination checks if edge e and e2 are the same
      * @return edge if edge e is not the same as edge e2
+     * <img src="checkIfDoubleEdges.jpg" alt="illustration" >
      */
     public Boolean checkIfDoubleEdges(ArrayList<Edge> edgelist, Node destination)
     {
@@ -255,6 +257,7 @@ public class HalfOrder
      * @param source of node
      * @param destination of node to node
      * @param alreadyProcessed add already processed node to already processed list
+     * <img src="halforder.jpg" alt="illustration" >
      */
     public void magicalAdd(ArrayList<Node> source, ArrayList<Node> destination, ArrayList<Node> alreadyProcessed)
     {
