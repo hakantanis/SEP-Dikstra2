@@ -156,6 +156,7 @@ public class HalfOrder2
      * @param edgelist checks if double edges exists
      * @param destination checks if edge e and e2 are the same
      * @return edge if edge e is not the same as edge e2
+     * <img src="checkIfDoubleEdges.jpg" alt="illustration" >
      */
     public Boolean checkIfDoubleEdges(ArrayList<Edge> edgelist, Node destination)
     {
