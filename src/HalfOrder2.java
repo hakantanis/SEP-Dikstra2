@@ -270,9 +270,9 @@ public class HalfOrder2
 
     /**
      * @param source of node
-     * <img src="halforder.jpg" alt="illustration" >
      * @param destination of node to node
      * @param alreadyProcessed add already processed node to already processed list
+     * <img src="halforder.jpg" alt="illustration" >
      */
     public void magicalAdd(ArrayList<Node> source, ArrayList<Node> destination,
                            ArrayList<Node> alreadyProcessed)
