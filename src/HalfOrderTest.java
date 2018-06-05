@@ -228,6 +228,28 @@ public class HalfOrderTest {
 		assertTrue(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
+	// c4 null
+	@Test
+	public void testCheckIfDoubleEdges10()
+	{
+		HalfOrder ho = new HalfOrder();
+		
+		ArrayList<Edge> edgelist = new ArrayList<Edge>();
+		Node n = new Node(null, 1, 3);
+		Node n2 = new Node(null, 2, 4);
+		
+		edgelist.add(new Edge (null));
+		edgelist.add(new Edge (null));
+		
+		edgelist.get(0).setDestination(n2);
+		edgelist.get(0).setSource(n);
+		
+		edgelist.get(1).setDestination(n2);
+		edgelist.get(1).setSource(n);
+		
+		assertTrue(ho.checkIfDoubleEdges(edgelist, n));
+		
+	}
 	
 	
 }

@@ -185,8 +185,13 @@ public class HalfOrder
             for (int j = 1; j < edgelist.size(); j++)
             {
                 Edge e = edgelist.get(i);
-                  Edge e2 = edgelist.get(j);
+                Edge e2 = edgelist.get(j);
 
+                if( e == null || e2 == null )
+                {
+                	return false;
+                }
+                
                 if (e != e2 && e.getDestination() == e2.getDestination() &&
                         e.getSource() == e2.getSource())
                 {
