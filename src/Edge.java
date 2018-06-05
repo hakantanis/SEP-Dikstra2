@@ -1,3 +1,5 @@
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  * Project Dijkstra Algorithm
@@ -10,16 +12,16 @@
  * @version 3.0
  *
  * Last Change:
- * by: Hakan Tanis
- * date: 30.05.2018
+ * by: Kevin Adamczewski
+ * date: 04.06.2018
  */
 
 public class Edge
 {
 	/**
-	 * @param: source from which node the edge starts
-	 * @param: destination is the adress that the edge goes to
-	 * @param: weight of the edge
+	 * @param: source
+	 * @param: destination
+	 * @param: weight
 	 */
 	private Node source = null;
 	private Node destination = null;
@@ -61,17 +63,17 @@ public class Edge
    		{
    			return weight;
    		}
-
    		Double setWeight(Double Weight)
    		{
    			return weight = weight;
    		}
 	 */
 
+
+
 	/**
-	 * @return edgeresult which containts a string that includes the parameters source, destination
-	 * and weight of an edge
 	 *
+	 * @return
 	 */
 	public String toString()
 	{
@@ -81,5 +83,25 @@ public class Edge
 
 		return edgeResult;
 	}
+	
+	 /*
+     * @param doc creats XML document to write everthing in the XML
+     * @param edges give the document the attribute
+     * 
+     */
+	   public void generateXml (Document doc, Element edges)
+	    {
+	    	Element edge = doc.createElement("Edge");
+	    	edges.appendChild(edge);
+	    	Element source = doc.createElement("Source");
+	    	source.setTextContent("" + this.source);
+	    	edge.appendChild(source);
+	    	Element destination = doc.createElement("Destination");
+	    	destination.setTextContent("" + this.destination);
+	    	edge.appendChild(destination);
+	    	Element weight = doc.createElement("Weight");
+	    	weight.setTextContent("" + this.weight);
+	    	edge.appendChild(weight);
+	    }
 
 }

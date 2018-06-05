@@ -1,4 +1,3 @@
-
 /**
  * Project Dijkstra Algorithm
  * This class is used to start the project
@@ -10,8 +9,8 @@
  * @version 3.0
  *
  * Last Change:
- * by: Hakan Tanis
- * date: 30.05.2018
+ * by: Kevin Adamczewski
+ * date: 04.06.2018
  */
 
 public class Main {

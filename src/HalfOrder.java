@@ -12,8 +12,8 @@ import java.util.Set;
  * @version 3.0
  *
  * Last Change:
- * by: Hakan Tanis
- * date: 30.05.2018
+ * by: Kevin Adamczewski
+ * date: 04.06.2018
  */
 
 public class HalfOrder
@@ -21,6 +21,15 @@ public class HalfOrder
     /**
      * initialisation of methods
      * <img src="halforder.jpg" alt="illustration" >
+     */
+	
+	public ArrayList<Node> nodes;
+	public ArrayList<Edge> edges;
+	
+	public Object nodelist;
+
+	/**
+     * initialisation of methods
      */
     public void init()
     {
@@ -37,7 +46,7 @@ public class HalfOrder
                 computeHalfOrder(getFirstNode(nodelist), nodelist, edgelist);
 
     }
-
+    
     /**
      * @param nodelist get the first node
      * @return first node
@@ -52,9 +61,9 @@ public class HalfOrder
      * @param edgelist prints edges of given edgelist
      * @param description of edge set to be printed as prefix
      */
-    private void printEdges(ArrayList<Edge> edgelist, String description)
+    private void printEdges(ArrayList<Edge> edgelist, String descr)
     {
-        System.out.println("Edges: " + description);
+        System.out.println("Edges: " + descr);
 
         for (int i = 0; i < edgelist.size(); i++)
         {
@@ -64,6 +73,24 @@ public class HalfOrder
         System.out.println("--------");
     }
 
+    public Edge returnEdge (int i)
+    {
+    	if ( i < 0 || i >= edges.size())
+    	{
+		return null;
+    	}
+    	return edges.get(i);
+    }
+    
+    public Node returnNode (int i)
+    {
+    	if ( i < 0 || i >= nodes.size())
+    	{
+    		return null;
+    	}
+    	return nodes.get(i);
+    }
+    
     /**
      * @param nodelist create and add list of edges (example one)
      * @return edgelist with sources, destinations and weights
@@ -71,6 +98,9 @@ public class HalfOrder
     private ArrayList<Edge> createEdgelistExampleOne(ArrayList<Node> nodelist)
     {
         ArrayList<Edge> edgelist = new ArrayList<Edge>();
+        
+        edges = edgelist;
+        
         edgelist.add(new Edge(8.0));
         edgelist.add(new Edge(10.0));
         edgelist.add(new Edge(5.0));
@@ -78,8 +108,8 @@ public class HalfOrder
         edgelist.add(new Edge(2.2));
         edgelist.add(new Edge(9.0));
         edgelist.add(new Edge(20.5));
-
-
+        
+        // setting destination and source
         edgelist.get(0).setDestination(nodelist.get(1));
         edgelist.get(0).setSource(nodelist.get(0));
 
@@ -108,9 +138,9 @@ public class HalfOrder
      * @param nodelist prints nodes
      * @param description of node set to be printed as prefix
      */
-    private void printNodes(ArrayList<Node> nodelist, String description)
+    private void printNodes(ArrayList<Node> nodelist, String descr)
     {
-        System.out.println("Nodelist : " + description);
+        System.out.println("Nodelist : " + descr);
         System.out.println();
 
         for (int i = 0; i < nodelist.size(); i++)
@@ -128,13 +158,16 @@ public class HalfOrder
     private ArrayList<Node> createNodelistExampleOne()
     {
         ArrayList<Node> nodelist = new ArrayList<Node>();
-
-        nodelist.add(new Node("Knoten 1 "));
-        nodelist.add(new Node("Knoten 2 "));
-        nodelist.add(new Node("Knoten 3 "));
-        nodelist.add(new Node("Knoten 4 "));
-        nodelist.add(new Node("Knoten 5 "));
-        nodelist.add(new Node("Knoten 6 "));
+        
+        nodes = nodelist;
+        
+        nodelist.add(new Node("Knoten 1 ",1,1));
+        nodelist.add(new Node("Knoten 2 ",2,2));
+        nodelist.add(new Node("Knoten 3 ",3,3));
+        nodelist.add(new Node("Knoten 4 ",4,4));
+        nodelist.add(new Node("Knoten 5 ",5,5));
+        nodelist.add(new Node("Knoten 6 ",6,6));
+        
         return nodelist;
     }
 
@@ -145,14 +178,14 @@ public class HalfOrder
      * @return edge if edge e is not the same as edge e2
      * <img src="checkIfDoubleEdges.jpg" alt="illustration" >
      */
-    public Boolean checkIfDoubleEdges(ArrayList<Edge> edgelist, Node destination)
+    public boolean checkIfDoubleEdges(ArrayList<Edge> edgelist, Node destination)
     {
         for (int i = 0; i < edgelist.size(); i++)
         {
             for (int j = 1; j < edgelist.size(); j++)
             {
                 Edge e = edgelist.get(i);
-                Edge e2 = edgelist.get(j);
+                  Edge e2 = edgelist.get(j);
 
                 if (e != e2 && e.getDestination() == e2.getDestination() &&
                         e.getSource() == e2.getSource())
@@ -271,5 +304,5 @@ public class HalfOrder
             }
         }
     }
-}
 
+}

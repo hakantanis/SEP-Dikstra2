@@ -1,3 +1,5 @@
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  * Project Dijkstra Algorithm
@@ -10,8 +12,8 @@
  * @version 3.0
  *
  * Last Change:
- * by: Hakan Tanis
- * date: 30.05.2018
+ * by: Kevin Adamczewski
+ * date: 04.06.2018
  */
 
 public class Node
@@ -29,9 +31,11 @@ public class Node
 /**
  * @param name assign direct name of node
  */
-    Node(String name)
+    Node(String name, int x, int y)
     {
         this.name = name;
+        this.x = x;
+        this.y = y;
     }
 
 
@@ -66,10 +70,10 @@ public class Node
     }
 
 
-/**
- * @param toString creats how to output name of node and posotion of x and y coordinate
- * @return result of output
- */
+    /**
+     * @param toString creats how to output name of node and posotion of x and y coordinate
+     * @return result of output
+     */
     public String toString()
     {
         String result = null;
@@ -88,5 +92,25 @@ public class Node
         }
         return result;
     }
+    /*
+     * @param doc creats XML document to write everthing in the XML
+     * @param nodes give the document the attribute
+     * 
+     */
+    public void generateXml (Document doc, Element nodes)
+    {
+    	Element node = doc.createElement("Node");
+    	nodes.appendChild(node);
+    	Element name = doc.createElement("Name");
+    	name.setTextContent(this.name);
+    	node.appendChild(name);
+    	Element x = doc.createElement("X");
+    	x.setTextContent("" + this.x);
+    	node.appendChild(x);
+    	Element y = doc.createElement("Y");
+    	y.setTextContent("" + this.y);
+    	node.appendChild(y);
+    }
+    
 
 }
