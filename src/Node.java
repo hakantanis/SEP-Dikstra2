@@ -74,24 +74,31 @@ public class Node
      * @param toString creats how to output name of node and posotion of x and y coordinate
      * @return result of output
      */
+    
     public String toString()
     {
-        String result = null;
+    	String result = null;
+    	
+    	if (name == null)
+    	{
+    		result = "kein name vorhanden";
+    	}
+    	else
+    	{
+    		result = name;
+    	}
 
-        if (name == null)
-        {
-            result = "kein Name vorhanden";
-        } else
-        {
-            result = name;
-        }
-
-        if (x != null && y != null)
-        {
-            result = result + "(x=" + x + ", " + "y=" + y + ")";
-        }
+    	
+    	if ( x != null && y != null)
+    	{
+    		result = result + "(x=" + x + ", " + "y=" + y + ")";
+    	}
+    	
+        
         return result;
     }
+    
+    
     /*
      * @param doc creats XML document to write everthing in the XML
      * @param nodes give the document the attribute

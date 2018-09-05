@@ -25,11 +25,11 @@ public class Edge
 	 */
 	private Node source = null;
 	private Node destination = null;
-	private Double weight = null;
+	private int weight;
 
-	Edge(Double weight)
+	Edge(int rndNum)
 	{
-		this.weight = weight;
+		this.weight = rndNum;
 	}
 
 	Node getSource()
@@ -58,16 +58,16 @@ public class Edge
 	{
 		this.destination = destination;
 	}
-	/*
-   		Double getWeight()
+	
+   		int getWeight()
    		{
    			return weight;
    		}
-   		Double setWeight(Double Weight)
+   		int setWeight(Double Weight)
    		{
    			return weight = weight;
    		}
-	 */
+	 
 
 
 

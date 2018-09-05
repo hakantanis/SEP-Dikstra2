@@ -20,11 +20,12 @@ import org.junit.Test;
  */
 public class HalfOrderTest {
 
-	//c1
+	HalfOrder ho = new HalfOrder();
+	
+	//c1	}
 	@Test
 	public void testCheckIfDoubleEdges()
 	{
-		HalfOrder ho = new HalfOrder();
 
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 		Node n  = new Node("A", 1, 3);
@@ -46,20 +47,16 @@ public class HalfOrderTest {
 	@Test
 	public void testCheckIfDoubleEdge1()
 	{
-		HalfOrder ho = new HalfOrder();
-
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 
 		assertFalse(ho.checkIfDoubleEdges(edgelist,null));
 	}
 
 	
-	// c3-1 e != e2  Dest != Dest    Source != Source
+	//case3-1  e != e2 , d != d , s != s
 	@Test
 	public void testCheckIfDoubleEdges2()
-	{
-		HalfOrder ho = new HalfOrder();
-		
+	{	
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 		Node n = new Node("A", 1, 3);
 		Node n2 = new Node("B", 2, 4);
@@ -76,7 +73,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	//c3-2  e!=e2  	Dest. != Dest  Source = Source
+	//case3-2  e != e2 , d! = d , s = s
 	@Test	
 	public void testCheckIfDoubleEdges3()
 	{
@@ -98,7 +95,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	//c3-3   e!= e2  Dest == dest  Source != source
+	//case3-3  e != e2 , d == d , s != s
 	@Test
 	public void testCheckIfDoubleEdges4()
 	{
@@ -120,7 +117,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	//c3-4 e == e2  d != d  s!=s
+	//case3-4  e == e2 , d != d , s != s
 	@Test
 	public void testCheckIfDoubleEdges5()
 	{
@@ -142,7 +139,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	//c3-5 e== e2  d == d  s!= s
+	//case3-5  e == e2 , d == d , s != s
 	@Test
 	public void testCheckIfDoubleEdges6()
 	{
@@ -164,7 +161,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	// c3-6 e==e2 d==d s==s
+	//case3-6  e == e2 , d == d , s == s
 	@Test 
 	public void testCheckIfDoubleEdges7()
 	{
@@ -185,7 +182,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	// c3-7 e==e d!=d s==s
+	//case3-7  e == e ,  d != d , s == s
 	@Test
 	public void testCheckIfDoubleEdges8()
 	{
@@ -206,7 +203,7 @@ public class HalfOrderTest {
 		assertFalse(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	// c3-8 e != e2  d==d s==s
+	//case3-8  e != e2 , d == d , s == s
 	@Test
 	public void testCheckIfDoubleEdges9()
 	{
@@ -228,7 +225,7 @@ public class HalfOrderTest {
 		assertTrue(ho.checkIfDoubleEdges(edgelist, n));
 		
 	}
-	// c4 null
+	//case4 null
 	@Test
 	public void testCheckIfDoubleEdges10()
 	{
@@ -251,5 +248,29 @@ public class HalfOrderTest {
 		
 	}
 	
-	
+/*	@Test
+	public void testComputeNextNodes()
+	{
+		
+		ArrayList<Edge> el = new ArrayList <Edge>();
+		
+		Node n = new Node("A", 1, 3);
+		Node n1 = new Node ("B",2,4);
+				
+        Edge e = new Edge(10.0);
+        
+        e.setDestination(n1);
+        e.setSource(n);
+                
+        assertEquals(n1,(ho.computeNextNodes(n, el)));
+        
+	}
+*/
+	@Test
+	public void testAddNodeIfNotRedundant()
+	{
+		
+	}
 }
+	
+	

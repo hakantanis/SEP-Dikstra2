@@ -16,18 +16,13 @@
 public class Main {
 
 	/**
+	 * @param <HalfOrder2>
 	 * @param args starts class HalfOrder and HalfOrder2
 	 */
 	public static void main(String[] args) {
 		HalfOrder t = new HalfOrder();
 		t.init();
 
-		System.out.println();
-		System.out.println("2ter Graph");
-		System.out.println();
-
-		HalfOrder2 b = new HalfOrder2();
-		b.init();
 
 	}
 
