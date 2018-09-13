@@ -44,7 +44,7 @@ public class HalfOrder
 		//	printEdges(edgelist);
 
 		ArrayList<ArrayList<Node>> listOfLists =
-				computeHalfOrder(getFirstNode(nodelist), nodelist, edgelist);
+				computeHalfOrder(setFirstNode(nodelist, edgelist), nodelist, edgelist);
 
 	}
 
@@ -72,7 +72,25 @@ public class HalfOrder
 		}
 		return edges.get(i);
 	}
+	private Node setFirstNode (ArrayList<Node> nodelist, ArrayList<Edge> edgelist)
+	{
+		Node firstNode = new Node("START");
+		
+		firstNode.setX(30);
+		firstNode.setY(400);
+		
+		return firstNode;
+	}
 
+	private Node setLastNode (ArrayList<Node> nodelist, ArrayList<Edge> edgelist)
+	{
+		Node lastNode = new Node ("END");
+		
+		lastNode.setX(1370);
+		lastNode.setY(400);
+		
+		return lastNode;
+	}
 	public Node returnNode (int i)
 	{
 		if ( i < 0 || i >= nodes.size())
@@ -277,14 +295,14 @@ public class HalfOrder
 		
 		for (int i=0; i < listOfLists.size(); i++) 
 		{
-		for (int y=0; y< nodelist.size();y++)
-		{
+			for (int y=0; y< nodelist.size();y++)
+			{
 			listOfLists.get(i);
 			int counterX = i*30;
 			int counterY = y*5;
 			nodelist.get(y).setX(counterX);
 			nodelist.get(y).setY(counterY);			
-		}
+			}
 		}
 	}
 
