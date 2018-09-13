@@ -70,7 +70,7 @@ public class GuiFX extends Application {
 		AnchorPane.setBottomAnchor(nextStep,0.0);
 		layout.getChildren().add(nextStep);
 		
-		Scene scene = new Scene(layout, 1200, 800);
+		Scene scene = new Scene(layout, 1400, 800);
 		stage.setScene(scene);
 		
 		stage.show();

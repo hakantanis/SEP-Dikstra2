@@ -40,21 +40,11 @@ public class HalfOrder
 
 		System.out.println();
 
-		ArrayList<Edge> edgelist = createEdgelistExampleOne(nodelist);
+		ArrayList<Edge> edgelist = createEdgelistRandom(nodelist);
 		//	printEdges(edgelist);
 
 		ArrayList<ArrayList<Node>> listOfLists =
 				computeHalfOrder(getFirstNode(nodelist), nodelist, edgelist);
-
-	}
-
-	/**
-	 * @param nodelist get the first node
-	 * @return first node
-	 */
-	public Node getFirstNode(ArrayList<Node> nodelist)
-	{
-		return nodelist.get(0);
 
 	}
 
@@ -96,61 +86,30 @@ public class HalfOrder
 	 * @param nodelist create and add list of edges (example one)
 	 * @return edgelist with sources, destinations and weights
 	 */
-	private ArrayList<Edge> createEdgelistExampleOne(ArrayList<Node> nodelist)
+	private ArrayList<Edge> createEdgelistRandom(ArrayList<Node> nodelist)
 	{
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 
-		int rndNum;
-
-		rndNum =(int) (Math.random() * 15) + 1;
+		Random randomWeight = new Random();
+		
+		int weightEdge = randomWeight.nextInt(15);
+		
 
 		edges = edgelist;
 		for (int i = 0; i < 40; i++)
 		{
-			edgelist.add(new Edge(rndNum));
+			edgelist.add(new Edge(weightEdge));
 		}
-		/*
-        edgelist.add(new Edge(rndNum));
-        edgelist.add(new Edge(rndNum));
-        edgelist.add(new Edge(rndNum));
-        edgelist.add(new Edge(rndNum));
-        edgelist.add(new Edge(rndNum));
-        edgelist.add(new Edge(rndNum));
-		 */
-		Random randomEdge = new Random();
-		int i = randomEdge.nextInt(50);
 		
-		for (int x= 0; i < edges.size();x++)
-		{
-			// X = ??
-			edgelist.get(i).setDestination(nodelist.get(x));
-			edgelist.get(i).setSource(nodelist.get(x));
+		Random r = new Random();
+		
+		for (int x= 0; x < edgelist.size();x++)
+		{ 
+
+			edgelist.get(x).setSource(nodelist.get(r.nextInt(nodelist.size())));
+			edgelist.get(x).setDestination(nodelist.get(r.nextInt(nodelist.size())));
 		}
-	
-		// setting destination and source
-		
-		/*
-	    edgelist.get(0).setDestination(nodelist.get(1));
-        edgelist.get(0).setSource(nodelist.get(0));
 
-        edgelist.get(1).setDestination(nodelist.get(3));
-        edgelist.get(1).setSource(nodelist.get(1));
-
-        edgelist.get(2).setDestination(nodelist.get(4));
-        edgelist.get(2).setSource(nodelist.get(2));
-
-        edgelist.get(3).setDestination(nodelist.get(5));
-        edgelist.get(3).setSource(nodelist.get(3));
-
-        edgelist.get(4).setDestination(nodelist.get(5));
-        edgelist.get(4).setSource(nodelist.get(4));
-
-        edgelist.get(5).setDestination(nodelist.get(2));
-        edgelist.get(5).setSource(nodelist.get(0));
-
-        edgelist.get(6).setDestination(nodelist.get(5));
-        edgelist.get(6).setSource(nodelist.get(0));
-			 */
 			return edgelist;
 	}
 
@@ -181,10 +140,10 @@ public class HalfOrder
 		ArrayList<Node> nodelist = new ArrayList<Node>();
 
 		nodes = nodelist;
-
-		for (int i = 1; i < 50; i++)
+		
+		for (int i = 0; i < 50; i++)
 		{
-			nodelist.add(new Node ("node " + i, 50, 200));
+			nodelist.add(new Node ("node " + i));
 
 		}
 
@@ -285,7 +244,7 @@ public class HalfOrder
 		allNodesProcessed.addAll(stepTarget);
 
 		int i = 1;
-
+		
 		printNodes(stepTarget, "" + i);
 		printNodes(allNodesProcessed, i + " processed");
 
@@ -311,6 +270,22 @@ public class HalfOrder
 		}
 
 		return listOfLists;
+	}
+	
+	public void positioningData (ArrayList<ArrayList<Node>> listOfLists,ArrayList<Node> nodelist, Node Nodes)
+	{		
+		
+		for (int i=0; i < listOfLists.size(); i++) 
+		{
+		for (int y=0; y< nodelist.size();y++)
+		{
+			listOfLists.get(i);
+			int counterX = i*30;
+			int counterY = y*5;
+			nodelist.get(y).setX(counterX);
+			nodelist.get(y).setY(counterY);			
+		}
+		}
 	}
 
 	/**

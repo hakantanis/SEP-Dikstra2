@@ -26,25 +26,35 @@ public class Node
     private Integer x = null;
     private Integer y = null;
     private String name = null;
+    private Integer shortPath = null;
 
 
 /**
  * @param name assign direct name of node
  */
-    Node(String name, int x, int y)
+    Node(String name)
     {
         this.name = name;
-        this.x = x;
-        this.y = y;
     }
-
-
-
+    
+    /**
+     * @param shortPath set value
+     */
+    
+    void setShortPath(Integer shortPath)
+    {
+    	this.shortPath= shortPath;
+    }
+    
+    Integer getShortPath()
+    {
+    	return shortPath;
+    }
+    
     Integer getX()
     {
         return x;
     }
-
 
 /**
  * @param x set value

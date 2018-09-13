@@ -27,9 +27,9 @@ public class Edge
 	private Node destination = null;
 	private int weight;
 
-	Edge(int rndNum)
+	Edge(int weight)
 	{
-		this.weight = rndNum;
+		this.weight = weight;
 	}
 
 	Node getSource()
