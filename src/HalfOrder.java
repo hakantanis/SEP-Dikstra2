@@ -26,43 +26,57 @@ public class HalfOrder
 
 	public ArrayList<Node> nodes;
 	public ArrayList<Edge> edges;
-
-	public Object nodelist;
+	public ArrayList<ArrayList<Node>> halfOrder;
 
 	/**
 	 * initialisation of methods
 	 */
+/*	public void initExampleOne()
+	{
+
+		 nodes = createNodelistExampleOne();
+		//	printNodes(nodes);
+
+		//System.out.println();
+
+		edges = createEdgelistRandom(nodes);
+		//	printEdges(edges);
+
+		halfOrder = computeHalfOrder(setFirstNode(nodes, edges), nodes, edges);
+
+		computePositioningData(halfOrder);
+
+	} */
+
 	public void init()
 	{
 
-		ArrayList<Node> nodelist = createNodelistExampleOne();
-		//	printNodes(nodelist);
+		nodes = createNodelistExampleTwo();
 
-		System.out.println();
+		edges = createEdgelistStatic(nodes);
 
-		ArrayList<Edge> edgelist = createEdgelistRandom(nodelist);
-		//	printEdges(edgelist);
+		halfOrder = computeHalfOrder(setFirstNode(nodes, edges), nodes, edges);
 
-		ArrayList<ArrayList<Node>> listOfLists =
-				computeHalfOrder(setFirstNode(nodelist, edgelist), nodelist, edgelist);
+		computePositioningData(halfOrder);
+
 
 	}
+
+	public void initTwo()
+	{
+		nodes = createNodelistExampleThree();
+
+		edges = createEdgelistStatic(nodes);
+
+		halfOrder = null;
+
+	}
+
 
 	/**
 	 * @param edgelist prints edges of given edgelist
 	 * @param description of edge set to be printed as prefix
 	 */
-	private void printEdges(ArrayList<Edge> edgelist, String descr)
-	{
-		System.out.println("Edges: " + descr);
-
-		for (int i = 0; i < edgelist.size(); i++)
-		{
-			System.out.println(edgelist.get(i));
-		}
-
-		System.out.println("--------");
-	}
 
 	public Edge returnEdge (int i)
 	{
@@ -104,7 +118,7 @@ public class HalfOrder
 	 * @param nodelist create and add list of edges (example one)
 	 * @return edgelist with sources, destinations and weights
 	 */
-	private ArrayList<Edge> createEdgelistRandom(ArrayList<Node> nodelist)
+/*	private ArrayList<Edge> createEdgelistRandom(ArrayList<Node> nodelist)
 	{
 		ArrayList<Edge> edgelist = new ArrayList<Edge>();
 
@@ -129,8 +143,68 @@ public class HalfOrder
 		}
 
 			return edgelist;
-	}
+	}*/
 
+	private ArrayList<Edge> createEdgelistStatic(ArrayList<Node> nodelist)
+	{
+		ArrayList<Edge> edgelist = new ArrayList<Edge>();
+
+		edges = edgelist;
+		Edge e = new Edge(5);
+		Edge e1 = new Edge(3);
+		Edge e2 = new Edge(2);
+		Edge e3 = new Edge(2);
+		Edge e4 = new Edge(1);
+		Edge e5 = new Edge(3);
+		Edge e6 = new Edge(1);
+		Edge e7 = new Edge(1);
+
+		edgelist.add(e);
+		edgelist.add(e1);
+		edgelist.add(e2);
+		edgelist.add(e3);
+		edgelist.add(e4);
+		edgelist.add(e5);
+		edgelist.add(e6);
+		edgelist.add(e7);
+
+		/*
+		edgelist.add(new Edge(5));
+		edgelist.add(new Edge(3));
+		edgelist.add(new Edge(2));
+		edgelist.add(new Edge(2));
+		edgelist.add(new Edge(1));
+		edgelist.add(new Edge(3));
+		edgelist.add(new Edge(1));
+		edgelist.add(new Edge(1));
+*/
+			edgelist.get(0).setSource(nodelist.get(0));
+			edgelist.get(0).setDestination(nodelist.get(1));
+
+			edgelist.get(1).setSource(nodelist.get(0));
+			edgelist.get(1).setDestination(nodelist.get(2));
+
+			edgelist.get(2).setSource(nodelist.get(0));
+			edgelist.get(2).setDestination(nodelist.get(3));
+
+			edgelist.get(3).setSource(nodelist.get(1));
+			edgelist.get(3).setDestination(nodelist.get(4));
+
+		edgelist.get(4).setSource(nodelist.get(2));
+		edgelist.get(4).setDestination(nodelist.get(5));
+
+		edgelist.get(5).setSource(nodelist.get(3));
+		edgelist.get(5).setDestination(nodelist.get(5));
+
+		edgelist.get(6).setSource(nodelist.get(4));
+		edgelist.get(6).setDestination(nodelist.get(6));
+
+			edgelist.get(7).setSource(nodelist.get(5));
+			edgelist.get(7).setDestination(nodelist.get(6));
+
+
+		return edgelist;
+	}
 
 	/**
 	 * @param nodelist prints nodes
@@ -153,7 +227,7 @@ public class HalfOrder
 	 * create list of nodes (example one)
 	 * @return list of named nodes (example one)
 	 */
-	private ArrayList<Node> createNodelistExampleOne()
+/*	public ArrayList<Node> createNodelistExampleOne()
 	{
 		ArrayList<Node> nodelist = new ArrayList<Node>();
 
@@ -167,7 +241,62 @@ public class HalfOrder
 
 		return nodelist;
 
+	}*/
+
+	public ArrayList<Node> createNodelistExampleTwo()
+	{
+		ArrayList<Node> nodelist = new ArrayList<Node>();
+
+		nodes = nodelist;
+
+		nodelist.add(new Node ("a"));
+		nodelist.add(new Node ("b"));
+		nodelist.add(new Node ("c"));
+		nodelist.add(new Node ("d"));
+		nodelist.add(new Node ("e"));
+		nodelist.add(new Node ("f"));
+		nodelist.add(new Node ("g"));
+
+		return nodelist;
 	}
+
+	public ArrayList<Node> createNodelistExampleThree()
+	{
+		ArrayList<Node> nodelist = new ArrayList<Node>();
+
+		nodes = nodelist;
+		Node node = new Node ("a");
+		node.setX(50);
+		node.setY(200);
+		nodelist.add(node);
+		Node node1 = new Node ("b");
+		node1.setX(100);
+		node1.setY(250);
+		nodelist.add(node1);
+		Node node2 = new Node ("c");
+		node2.setX(100);
+		node2.setY(200);
+		nodelist.add(node2);
+		Node node3 = new Node ("d");
+		node3.setX(100);
+		node3.setY(150);
+		nodelist.add(node3);
+		Node node4 = new Node ("e");
+		node4.setX(150);
+		node4.setY(225);
+		nodelist.add(node4);
+		Node node5 = new Node ("f");
+		node5.setX(150);
+		node5.setY(175);
+		nodelist.add(node5);
+		Node node6 = new Node ("g");
+		node6.setX(200);
+		node6.setY(200);
+		nodelist.add(node6);
+
+		return nodelist;
+	}
+
 
 	/**
 	 * checks if double edges exists
@@ -290,18 +419,18 @@ public class HalfOrder
 		return listOfLists;
 	}
 	
-	public void positioningData (ArrayList<ArrayList<Node>> listOfLists,ArrayList<Node> nodelist, Node Nodes)
+	public void computePositioningData (ArrayList<ArrayList<Node>> halfOrder)
 	{		
 		
-		for (int i=0; i < listOfLists.size(); i++) 
+		for (int x=0; x < halfOrder.size(); x++)
 		{
-			for (int y=0; y< nodelist.size();y++)
+			ArrayList<Node> nodes = halfOrder.get(x);
+
+			for (int y=0; y< nodes.size();y++)
 			{
-			listOfLists.get(i);
-			int counterX = i*30;
-			int counterY = y*5;
-			nodelist.get(y).setX(counterX);
-			nodelist.get(y).setY(counterY);			
+				Node node =  nodes.get(x);
+				node.setX(x * 30);
+				node.setY(y * 5 );
 			}
 		}
 	}

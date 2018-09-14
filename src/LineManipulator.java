@@ -18,14 +18,37 @@ import javafx.application.Application;
 import javafx.beans.property.*;
 import javafx.event.EventHandler;
 import javafx.scene.*;
+import javafx.scene.Cursor;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.scene.layout.VBox;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 /** Example of dragging anchors around to manipulate a line. */
 public class LineManipulator extends Application {
+    Edge edges;
+
+   /** private ArrayList<Line> listOfLines (ArrayList<Edge> edgelist)
+    {
+
+        ArrayList<Edge> ListOfEdge = new ArrayList<Edge>();
+
+        Line line = new Line();
+        for (int i = 0; i<50; i++)
+        {
+            line.add(edgelist.get(i).source.xcoordinate);
+            line.add(edgelist.get(i).source.ycoordinate);
+            line.add(edgelist.get(i).destination.xcoordinate);
+            line.add(edgelist.get(i).destination.ycoordinate);
+        }
+    **/
+
+
+
     public static void main(String[] args) throws Exception { launch(args); }
     @Override public void start(final Stage stage) throws Exception {
 
@@ -34,6 +57,11 @@ public class LineManipulator extends Application {
         final Scene scene = new Scene(box,300, 250);
         scene.setFill(null);
         Line line = new Line();
+
+
+        Path path = new Path();
+        path.getElements().add(new MoveTo(0.0f, 50.0f));
+        path.getElements().add(new LineTo(100.0f, 100.0f));
 
         Line line2 = new Line(10.0f,0.3f,200.0f,200.0f);
 
@@ -170,5 +198,13 @@ public class LineManipulator extends Application {
 
         // records relative x and y co-ordinates.
         private class Delta { double x, y; }
+    }
+
+    public void paint(Graphics g)
+    {
+        for(int i=0; i<50; i++)
+        {
+            /*edges.paint(g); */
+        }
     }
 }

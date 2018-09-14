@@ -6,8 +6,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
-import org.w3c.dom.NodeList;
 
+import org.w3c.dom.NodeList;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -20,17 +20,35 @@ public class PerfectLineManipulator extends Application
     @Override public void start(final Stage stage) throws Exception
     {
         HalfOrder hO = new HalfOrder();
-        hO.init();
-        hO.createEdgelistExampleOne((ArrayList<Node>) hO.nodelist);
+        hO.initTwo();
 
-        ArrayList<DoubleProperty> listOfProperties = new ArrayList<DoubleProperty>();
-        for (int i = 0; i <  hO.edgelist.size; i++)
+        Group group = new Group();
+        for (int n = 0; n <  hO.nodes.size(); n++)
+        {
+            Node node = hO.nodes.get(n);
+            DoubleProperty x = new SimpleDoubleProperty(node.getX());
+            DoubleProperty y = new SimpleDoubleProperty(node.getY());
+            Anchor anchor = new Anchor(Color.GREY, x, y);
+            group.getChildren().add(anchor);
+        }
+
+        for (int n = 0; n< hO.edges.size() ; n++)
+        {
+            Edge edge = hO.edges.get(0);
+        }
+        stage.setTitle("Line Manipulation Sample");
+        stage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
+        stage.show();
+
+       /* ArrayList<DoubleProperty> listOfProperties = new ArrayList<DoubleProperty>();
+        for (int i = 0; i <  ; i++)
         {
             listOfProperties.add(new SimpleDoubleProperty(edgelist.get(i).source.x));
             listOfProperties.add(new SimpleDoubleProperty(edgelist.get(i).source.y));
             listOfProperties.add(new SimpleDoubleProperty(edgelist.get(i).destination.x));
             listOfProperties.add(new SimpleDoubleProperty(edgelist.get(i).destination.y));
         }
+        */
 
        /* DoubleProperty startX = new SimpleDoubleProperty(100);
         DoubleProperty startY = new SimpleDoubleProperty(100);
@@ -39,18 +57,14 @@ public class PerfectLineManipulator extends Application
         DoubleProperty endX   = new SimpleDoubleProperty(300);
         DoubleProperty endY   = new SimpleDoubleProperty(200); */
 
-        ArrayList<Anchor> ListOfAnchors = new ArrayList<Anchor>();
-            for (int i = 0; i <  nodelist.size; i++)
-            {
-            ListOfAnchors.add(new Anchor(Color.GREY, edgelist.get(i).source.x, edgelist.get(i).source.y));
-            }
+
 
         //Anchor start    = new Anchor(Color.PALEGREEN, startX, startY);
         //Anchor test    = new Anchor(Color.GREY, testX, testY);
         //Anchor end      = new Anchor(Color.TOMATO,    endX,   endY);
 
         //??
-        ArrayList<listOfLists> ListsOfHalforder = new ArrayList<listOfLists>();
+       /* ArrayList<listOfLists> ListsOfHalforder = new ArrayList<listOfLists>();
             for (int i = 0; i < listOfLists.size; i++)
             {
                 return  Node;
@@ -67,23 +81,10 @@ public class PerfectLineManipulator extends Application
                         edgelist.get(i).destination.y;
                         }
             }
-
+        */
        // Line line = new BoundLine(startX, startY, endX, endY);
        // Line line1= new BoundLine(testX, testY,startX, startY);
-        stage.setTitle("Line Manipulation Sample");
 
-        Group group = new Group();
-
-        group.getChildren().add(start);
-        group.getChildren().add(end);
-        group.getChildren().add(test);
-
-        group.getChildren().add(line);
-        group.getChildren().add(line1);
-
-
-        stage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
-        stage.show();
     }
 
     class BoundLine extends Line
@@ -94,7 +95,7 @@ public class PerfectLineManipulator extends Application
             endXProperty().bind(endX);
             endYProperty().bind(endY);
             setStrokeWidth(3);
-            setStroke(Color.GRAY.deriveColor(0, 1, 1, 0.5));
+            setStroke(Color.BLACK.deriveColor(0, 1, 1, 0.5));
             setStrokeLineCap(StrokeLineCap.BUTT);
            // getStrokeDashArray().setAll(10.0, 5.0);
             setMouseTransparent(true);

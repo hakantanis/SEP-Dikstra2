@@ -27,6 +27,7 @@ public class Node
     private Integer y = null;
     private String name = null;
     private Integer shortPath = null;
+    private Node prevNode = null;
 
 
 /**

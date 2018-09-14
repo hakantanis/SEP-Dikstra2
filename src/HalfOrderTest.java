@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+/*import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import org.junit.Test;
  * by: Kevin Adamczewski
  * date: 04.06.2018
  */
-public class HalfOrderTest {
+/*public class HalfOrderTest {
 
 	HalfOrder ho = new HalfOrder();
 	
@@ -266,11 +266,14 @@ public class HalfOrderTest {
         
 	}
 */
+/*
 	@Test
 	public void testAddNodeIfNotRedundant()
 	{
 		
 	}
-}
+}*/
+
+
 	
 	

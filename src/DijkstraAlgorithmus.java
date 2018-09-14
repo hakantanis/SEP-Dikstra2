@@ -39,7 +39,7 @@ public class DijkstraAlgorithmus
 					nextList++;
 					listOfLists.get(nextList);
 				}
-				if
+
 				
 				
 				edgelist.get(i).setSource(nodelist.get(i));
