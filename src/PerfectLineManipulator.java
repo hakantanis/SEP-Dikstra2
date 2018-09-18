@@ -6,12 +6,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
+import javafx.scene.text.*;
+
 
 import org.w3c.dom.NodeList;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
-
+import java.util.HashMap;
 
 /** Example of dragging anchors around to manipulate a line. */
 public class PerfectLineManipulator extends Application
@@ -23,18 +24,30 @@ public class PerfectLineManipulator extends Application
         hO.initTwo();
 
         Group group = new Group();
+        HashMap<Node, XYProperties> nodesWithXY = new HashMap<Node, XYProperties>();
+
         for (int n = 0; n <  hO.nodes.size(); n++)
         {
             Node node = hO.nodes.get(n);
+
             DoubleProperty x = new SimpleDoubleProperty(node.getX());
             DoubleProperty y = new SimpleDoubleProperty(node.getY());
+            XYProperties xyprop = new XYProperties(x,y);
+            nodesWithXY.put(node, xyprop);
+
             Anchor anchor = new Anchor(Color.GREY, x, y);
             group.getChildren().add(anchor);
         }
 
         for (int n = 0; n< hO.edges.size() ; n++)
         {
-            Edge edge = hO.edges.get(0);
+            Edge edge = hO.edges.get(n);
+            XYProperties xyPropSource = nodesWithXY.get(edge.getSource());
+            XYProperties xyPropDest = nodesWithXY.get(edge.getDestination());
+
+            BoundLine line = new BoundLine(xyPropSource.xProperty(),xyPropSource.yProperty(),
+                    xyPropDest.xProperty(), xyPropDest.yProperty());
+            group.getChildren().add(line);
         }
         stage.setTitle("Line Manipulation Sample");
         stage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
@@ -85,6 +98,22 @@ public class PerfectLineManipulator extends Application
        // Line line = new BoundLine(startX, startY, endX, endY);
        // Line line1= new BoundLine(testX, testY,startX, startY);
 
+    }
+    private void dataPosition (ArrayList<Node> nodelist,Node firstNode, ArrayList<Edge> edgelist)
+    {
+        for (int j = 0; j < edgelist.size(); j++)
+        {
+            for (int i = 0; i < nodelist.size(); i++)
+            {
+                Node position = nodelist.get(i);
+                Edge allEdges = edgelist.get(j);
+                int p = 5;
+
+                int textx = (firstNode.getX() + position.getX()) / 2;
+                int texty = (firstNode.getY() + position.getY()) / 2;
+                Text text = new Text(textx, texty,);
+            }
+        }
     }
 
     class BoundLine extends Line

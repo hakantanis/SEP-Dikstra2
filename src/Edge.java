@@ -63,9 +63,9 @@ public class Edge
    		{
    			return weight;
    		}
-   		int setWeight(Double Weight)
+   		void setWeight(int weight)
    		{
-   			return weight = weight;
+   			this.weight = weight;
    		}
 	 
 

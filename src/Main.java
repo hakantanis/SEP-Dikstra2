@@ -16,7 +16,7 @@
 public class Main {
 
 	/**
-	 * @param <HalfOrder2>
+	 * @param <HalfOrder>
 	 * @param args starts class HalfOrder and HalfOrder2
 	 */
 	public static void main(String[] args) {
