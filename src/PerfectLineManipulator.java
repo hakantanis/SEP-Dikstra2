@@ -7,6 +7,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.*;
 import javafx.stage.Stage;
 import javafx.scene.text.*;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+
 
 
 import org.w3c.dom.NodeList;
@@ -25,6 +28,7 @@ public class PerfectLineManipulator extends Application
 
         Group group = new Group();
         HashMap<Node, XYProperties> nodesWithXY = new HashMap<Node, XYProperties>();
+        Text weight = new Text();
 
         for (int n = 0; n <  hO.nodes.size(); n++)
         {
@@ -48,6 +52,33 @@ public class PerfectLineManipulator extends Application
             BoundLine line = new BoundLine(xyPropSource.xProperty(),xyPropSource.yProperty(),
                     xyPropDest.xProperty(), xyPropDest.yProperty());
             group.getChildren().add(line);
+        }
+        for (int n = 0; n < hO.edges.size(); n++)
+
+        //private void dataPosition (ArrayList<Node> nodelist,Node firstNode, ArrayList<Edge> edgelist)
+        {
+            ArrayList<Node> nodelist = hO.nodes;
+            ArrayList<Edge> edgelist = hO.edges;
+
+            Node firstNode = new Node("START");
+            firstNode.setX(30);
+            firstNode.setY(400);
+
+            for (int j = 0; j < edgelist.size(); j++)
+            {
+                for (int i = 0; i < nodelist.size(); i++)
+                {
+                    Node position = nodelist.get(i);
+                    Edge allEdges = edgelist.get(j);
+
+                    String gewicht = String.valueOf(allEdges.getWeight());
+
+                    int textx = (firstNode.getX() + position.getX()) / 2;
+                    int texty = (firstNode.getY() + position.getY()) / 2;
+                    Text text = new Text(textx, texty, gewicht);
+                    group.getChildren().add(text);
+                }
+            }
         }
         stage.setTitle("Line Manipulation Sample");
         stage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
@@ -99,7 +130,7 @@ public class PerfectLineManipulator extends Application
        // Line line1= new BoundLine(testX, testY,startX, startY);
 
     }
-    private void dataPosition (ArrayList<Node> nodelist,Node firstNode, ArrayList<Edge> edgelist)
+    private void dataPosition (ArrayList<Node> nodelist, Node firstNode, ArrayList<Edge> edgelist)
     {
         for (int j = 0; j < edgelist.size(); j++)
         {
@@ -107,11 +138,14 @@ public class PerfectLineManipulator extends Application
             {
                 Node position = nodelist.get(i);
                 Edge allEdges = edgelist.get(j);
-                int p = 5;
+                String gewicht = String.valueOf(allEdges.getWeight());
 
                 int textx = (firstNode.getX() + position.getX()) / 2;
                 int texty = (firstNode.getY() + position.getY()) / 2;
-                Text text = new Text(textx, texty,);
+                Text text = new Text(textx, texty, gewicht);
+                text.setFont(new Font(20));
+                text.setTextAlignment(TextAlignment.CENTER);
+                text.setText(gewicht);
             }
         }
     }
@@ -125,8 +159,9 @@ public class PerfectLineManipulator extends Application
             endYProperty().bind(endY);
             setStrokeWidth(3);
             setStroke(Color.BLACK.deriveColor(0, 1, 1, 0.5));
+            //setStroke(Color.YELLOW.deriveColor(0, 1, 1, 0.5));
+            //setStroke(Color.GREEN.deriveColor(0, 1, 1, 0.5));
             setStrokeLineCap(StrokeLineCap.BUTT);
-           // getStrokeDashArray().setAll(10.0, 5.0);
             setMouseTransparent(true);
         }
     }

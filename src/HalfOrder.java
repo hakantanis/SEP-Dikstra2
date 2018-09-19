@@ -73,6 +73,7 @@ public class HalfOrder
 
         halfOrder = null;
 
+
     }
 
 
@@ -102,6 +103,7 @@ public class HalfOrder
 
         return firstNode;
     }
+
 
 
 
@@ -164,7 +166,6 @@ public class HalfOrder
 
         edges = edgelist;
         Edge e = new Edge(5);
-        Text weightText = new Text(50, 0, "5");
         Edge e1 = new Edge(3);
         Edge e2 = new Edge(2);
         Edge e3 = new Edge(2);
