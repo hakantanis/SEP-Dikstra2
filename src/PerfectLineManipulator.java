@@ -20,15 +20,20 @@ import java.util.HashMap;
 /** Example of dragging anchors around to manipulate a line. */
 public class PerfectLineManipulator extends Application
 {
+    private Group group = new Group();
+    private HalfOrder hO = new HalfOrder();
+    private HashMap<Node, XYProperties> nodesWithXY = new HashMap<Node, XYProperties>();
+    private Text text;
+
+    private double x1 = 50;
+    private double y1 = 200;
+
     public static void main(String[] args) throws Exception { launch(args); }
     @Override public void start(final Stage stage) throws Exception
     {
-        HalfOrder hO = new HalfOrder();
         hO.initTwo();
 
-        Group group = new Group();
-        HashMap<Node, XYProperties> nodesWithXY = new HashMap<Node, XYProperties>();
-        Text weight = new Text();
+        weight(hO.nodes.get(0).getX(), hO.nodes.get(0).getY());
 
         for (int n = 0; n <  hO.nodes.size(); n++)
         {
@@ -53,33 +58,56 @@ public class PerfectLineManipulator extends Application
                     xyPropDest.xProperty(), xyPropDest.yProperty());
             group.getChildren().add(line);
         }
-        for (int n = 0; n < hO.edges.size(); n++)
 
-        //private void dataPosition (ArrayList<Node> nodelist,Node firstNode, ArrayList<Edge> edgelist)
-        {
-            ArrayList<Node> nodelist = hO.nodes;
-            ArrayList<Edge> edgelist = hO.edges;
 
-            Node firstNode = new Node("START");
-            firstNode.setX(30);
-            firstNode.setY(400);
+//        Node firstNode1 = new Node("START");
+//        firstNode1.setX(30);
+//        firstNode1.setY(400);
+//
+//        ArrayList<Node> nodelist1 = hO.nodes;
+//        ArrayList<Edge> edgelist1 = hO.edges;
+//
+//        Node position1 = nodelist1.get(0); // X und Y Koordinate
+//        Node position2 = nodelist1.get(1); // X und Y Koordinate
+//
+//        Edge allEdges1 = edgelist1.get(0); // String Gewicht
+//
+//        String gewicht1 = String.valueOf(allEdges1.getWeight());
+//
+//        int textxx = ((position1.getX() + position2.getX()) / 2);
+//        int textyy = ((position1.getY() + position2.getY()) / 2);
+//
+//        Text text = new Text(textxx, textyy, gewicht1);
+//        group.getChildren().add(text);
 
-            for (int j = 0; j < edgelist.size(); j++)
-            {
-                for (int i = 0; i < nodelist.size(); i++)
-                {
-                    Node position = nodelist.get(i);
-                    Edge allEdges = edgelist.get(j);
-
-                    String gewicht = String.valueOf(allEdges.getWeight());
-
-                    int textx = (firstNode.getX() + position.getX()) / 2;
-                    int texty = (firstNode.getY() + position.getY()) / 2;
-                    Text text = new Text(textx, texty, gewicht);
-                    group.getChildren().add(text);
-                }
-            }
-        }
+//        for (int n = 0; n < hO.edges.size(); n++)
+//
+////        private void dataPosition (ArrayList<Node> nodelist,Node firstNode, ArrayList<Edge> edgelist)
+//        {
+//            ArrayList<Node> nodelist = hO.nodes;
+//            ArrayList<Edge> edgelist = hO.edges;
+//
+//            Node firstNode = new Node("START");
+//            firstNode.setX(30);
+//            firstNode.setY(400);
+//
+//            for (int j = 7; j < edgelist.size(); j++)
+//            {
+//                for (int i = 0; i < nodelist.size(); i++)
+//                {
+//                    Node position = nodelist.get(i);
+//                    Edge allEdges = edgelist.get(j);
+//
+//                    String gewicht = String.valueOf(allEdges.getWeight());
+//
+//                    int textx = ((firstNode.getX() + position.getX()) / 2);
+//                    int texty = ((firstNode.getY() + position.getY()) / 2);
+//
+//                    Text text = new Text(textx, texty, gewicht);
+//                    group.getChildren().add(text);
+//                }
+//            }
+//        }
         stage.setTitle("Line Manipulation Sample");
         stage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
         stage.show();
@@ -130,24 +158,44 @@ public class PerfectLineManipulator extends Application
        // Line line1= new BoundLine(testX, testY,startX, startY);
 
     }
-    private void dataPosition (ArrayList<Node> nodelist, Node firstNode, ArrayList<Edge> edgelist)
-    {
-        for (int j = 0; j < edgelist.size(); j++)
-        {
-            for (int i = 0; i < nodelist.size(); i++)
-            {
-                Node position = nodelist.get(i);
-                Edge allEdges = edgelist.get(j);
-                String gewicht = String.valueOf(allEdges.getWeight());
+//    private void dataPosition (ArrayList<Node> nodelist, Node firstNode, ArrayList<Edge> edgelist)
+//    {
+//        for (int j = 0; j < edgelist.size(); j++)
+//        {
+//            for (int i = 0; i < nodelist.size(); i++)
+//            {
+//                Node position = nodelist.get(i);
+//                Edge allEdges = edgelist.get(j);
+//                String gewicht = String.valueOf(allEdges.getWeight());
+//
+//                int textx = (firstNode.getX() + position.getX()) / 2;
+//                int texty = (firstNode.getY() + position.getY()) / 2;
+//                Text text = new Text(textx, texty, gewicht);
+//                text.setFont(new Font(20));
+//                text.setTextAlignment(TextAlignment.CENTER);
+//                text.setText(gewicht);
+//            }
+//        }
+//    }
 
-                int textx = (firstNode.getX() + position.getX()) / 2;
-                int texty = (firstNode.getY() + position.getY()) / 2;
-                Text text = new Text(textx, texty, gewicht);
-                text.setFont(new Font(20));
-                text.setTextAlignment(TextAlignment.CENTER);
-                text.setText(gewicht);
-            }
-        }
+    public void weight (double x, double y){
+        // VON A ZU B
+
+        ArrayList<Node> nodelist1 = hO.nodes;
+        ArrayList<Edge> edgelist1 = hO.edges;
+
+        Node position1 = nodelist1.get(0); // X und Y Koordinate
+        Node position2 = nodelist1.get(1); // X und Y Koordinate
+
+        Edge allEdges1 = edgelist1.get(0); // String Gewicht
+
+        String gewicht1 = String.valueOf(allEdges1.getWeight());
+
+        double textXX = ((x + position2.getX()) / 2);
+        double textYY = ((y + position2.getY()) / 2);
+
+        text = new Text(textXX, textYY, gewicht1);
+        group.getChildren().add(text);
     }
 
     class BoundLine extends Line
@@ -180,6 +228,7 @@ public class PerfectLineManipulator extends Application
             x.bind(centerXProperty());
             y.bind(centerYProperty());
             enableDrag();
+
         }
 
         // make a node movable by dragging it around with the mouse.
@@ -194,6 +243,7 @@ public class PerfectLineManipulator extends Application
                     dragDelta.x = getCenterX() - mouseEvent.getX();
                     dragDelta.y = getCenterY() - mouseEvent.getY();
                     getScene().setCursor(Cursor.MOVE);
+
                 }
             });
             setOnMouseReleased(new EventHandler<MouseEvent>()
@@ -217,6 +267,10 @@ public class PerfectLineManipulator extends Application
                     {
                         setCenterY(newY);
                     }
+
+                            group.getChildren().remove(text);
+                            weight(mouseEvent.getX() + dragDelta.x, mouseEvent.getY() + dragDelta.y);
+
                 }
             });
             setOnMouseEntered(new EventHandler<MouseEvent>()
@@ -242,6 +296,9 @@ public class PerfectLineManipulator extends Application
         }
 
         // records relative x and y co-ordinates.
-        private class Delta { double x, y; }
+        private class Delta
+        {
+            double x, y;
+        }
     }
 }
