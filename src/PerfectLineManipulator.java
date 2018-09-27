@@ -72,7 +72,7 @@ import java.util.*;
             group.getChildren().add(line);
         }
 
-        secondStage.setTitle("Line Manipulation Sample");
+        secondStage.setTitle("Dijkstra Visualization");
         secondStage.setScene(new Scene(group, 400, 400, Color.ALICEBLUE));
         secondStage.show();
     }
@@ -178,8 +178,8 @@ import java.util.*;
         // Die Elemente der Nodelist werden an der Stelle "m" zu dem Array hinzugefügt
         for (int m = 0; m < nodeList.size(); m++)
         {
-            String nodename = nodeList.get(m).getName();
-            nodeNames[m] = nodename;
+            String nodeName = nodeList.get(m).getName();
+            nodeNames[m] = nodeName;
         } // Resultat: nodeNames ["a", "b", "c", "d", "e", "f", "g"]
 
         for (Node node : nodes)
@@ -212,10 +212,10 @@ import java.util.*;
     /**
      * <h2><set class Boundline extends Line with DoubleProperties to display edge/h2>
      * <p>
-     * startX of edge
-     * startY of edge
-     * endX of Edge
-     * endY of Edge
+     * startX Position of edge
+     * startY Position of edge
+     * endX Position of Edge
+     * endY Position of Edge
      * set look of Line
      *
      */
