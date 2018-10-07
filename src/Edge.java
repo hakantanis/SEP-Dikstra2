@@ -16,16 +16,22 @@ import org.w3c.dom.Element;
  * date: 04.06.2018
  */
 
-public class Edge
+public class Edge extends NodeOrEdgeToColor
 {
 	/**
 	 * @param: source
 	 * @param: destination
 	 * @param: weight
+	 * @param: processed
 	 */
 	private Node source = null;
 	private Node destination = null;
-	private int weight;
+	private Integer weight = null; 
+	private boolean processed = false;
+	
+	/**
+	 * @param weight to assign a weight on the Edge
+	 */
 
 	Edge(int weight)
 	{
@@ -38,7 +44,7 @@ public class Edge
 	}
 
 	/**
-	 * @param source set name or x axis or y axis?
+	 * @param source set name or x axis or y axis
 	 */
 	void setSource (Node source)
 			{
@@ -59,17 +65,13 @@ public class Edge
 		this.destination = destination;
 	}
 	
-   		int getWeight()
-   		{
-   			return weight;
-   		}
-   		void setWeight(int weight)
-   		{
-   			this.weight = weight;
-   		}
-	 
+	public Integer getWeight() {
+		return weight;
+	}
 
-
+	public void setWeight(Integer weight) {
+		this.weight = weight;
+	}
 
 	/**
 	 *
@@ -84,7 +86,7 @@ public class Edge
 		return edgeResult;
 	}
 	
-	 /*
+	 /**
      * @param doc creats XML document to write everthing in the XML
      * @param edges give the document the attribute
      * 

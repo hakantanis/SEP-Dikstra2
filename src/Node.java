@@ -16,7 +16,7 @@ import org.w3c.dom.Element;
  * date: 04.06.2018
  */
 
-public class Node
+public class Node extends NodeOrEdgeToColor
 {
     /**
      * @param: x    getting x coordinate
@@ -27,7 +27,6 @@ public class Node
     private Integer y = null;
     private String name = null;
     private Integer shortPath = null;
-    private Node prevNode = null;
 
 
 /**
@@ -40,18 +39,22 @@ public class Node
     
     /**
      * @param shortPath set value
+     * @return 
      */
     
-    void setShortPath(Integer shortPath)
+    Integer setShortPath(Integer shortPath)
     {
-    	this.shortPath= shortPath;
+    	return this.shortPath = shortPath;
     }
     
     Integer getShortPath()
     {
     	return shortPath;
     }
-    
+    String getName()
+    {
+    return name;
+    }
     Integer getX()
     {
         return x;
@@ -99,7 +102,6 @@ public class Node
     		result = name;
     	}
 
-    	
     	if ( x != null && y != null)
     	{
     		result = result + "(x=" + x + ", " + "y=" + y + ")";

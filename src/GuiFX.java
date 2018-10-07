@@ -34,12 +34,7 @@ public class GuiFX extends Application {
 		m.getItems().add(save);
 		m.getItems().add(load);
 		
-		load.setOnAction(new EventHandler<ActionEvent>() {
-			
-			public void handle(ActionEvent event) {
-				FileChooser c = new FileChooser();
-				c.showOpenDialog(stage);	
-		}
+		load.setOnAction(e -> {
 			
 		});
 		

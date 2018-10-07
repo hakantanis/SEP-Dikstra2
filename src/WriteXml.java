@@ -34,7 +34,10 @@ public class WriteXml
     public void createXML()
     {
         HalfOrder halfOrder = new HalfOrder();
-        halfOrder.init();
+        //halfOrder.init();
+        halfOrder.initOne();
+        halfOrder.initTwo();
+        halfOrder.initThree();
 
         try
         {
@@ -70,7 +73,7 @@ public class WriteXml
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:\\Users\\Kevin\\Desktop\\tsp.xml"));
+            StreamResult result = new StreamResult(new File("C:\\users\\Kevin\\Desktop\\DijkstraXML.xml"));
             transformer.transform(source, result);
         } catch (Exception e)
         {
